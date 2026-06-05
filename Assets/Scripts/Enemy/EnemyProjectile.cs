@@ -6,13 +6,24 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out PlayerHealth playerHealth))
+        // Ignorar otros proyectiles enemigos
+        if (other.CompareTag("EnemyProjectile")) return;
+        // Ignorar a los propios enemigos
+        if (other.CompareTag("Enemy")) return;
+
+        // Buscar PlayerHealth en el objeto tocado O en su padre
+        PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+        if (playerHealth == null)
+            playerHealth = other.GetComponentInParent<PlayerHealth>();
+
+        if (playerHealth != null)
         {
             playerHealth.TakeDamage(damage);
             Destroy(gameObject);
+            return;
         }
 
-        if (!other.CompareTag("Enemy"))
-            Destroy(gameObject);
+        // Si tocó cualquier otra cosa (paredes, suelo) se destruye
+        Destroy(gameObject);
     }
 }

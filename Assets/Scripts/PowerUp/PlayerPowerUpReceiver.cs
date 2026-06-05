@@ -20,19 +20,24 @@ public class PlayerPowerUpReceiver : MonoBehaviour
         switch (powerUpData.Type)
         {
             case PowerUpType.Heal:
-                playerStats.Heal(powerUpData.Value);
-                Debug.Log("Heal aplicado: " + powerUpData.Value);
+                // Buscar PlayerHealth en vez de PlayerStats
+                PlayerHealth playerHealth = GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                    playerHealth.Heal(powerUpData.Value);
                 break;
 
             case PowerUpType.SpeedBoost:
                 ApplySpeedBoost(powerUpData.Value, powerUpData.Duration);
-                Debug.Log("SpeedBoost aplicado por " + powerUpData.Duration + " segundos");
+                HUDManager.Instance?.ShowPowerUp(
+                    powerUpData.DisplayName, powerUpData.Duration);
                 break;
 
             case PowerUpType.RapidFire:
                 ApplyRapidFire(powerUpData.Value, powerUpData.Duration);
-                Debug.Log("RapidFire aplicado por " + powerUpData.Duration + " segundos");
+                HUDManager.Instance?.ShowPowerUp(
+                    powerUpData.DisplayName, powerUpData.Duration);
                 break;
+
             case PowerUpType.DamageBoost:
                 Debug.Log("Damage boost not implemented yet.");
                 break;
@@ -47,8 +52,8 @@ public class PlayerPowerUpReceiver : MonoBehaviour
     {
         if (speedBoostCoroutine != null)
             StopCoroutine(speedBoostCoroutine);
-
-        speedBoostCoroutine = StartCoroutine(ApplySpeedBoostRoutine(multiplier, duration));
+        speedBoostCoroutine = StartCoroutine(
+            ApplySpeedBoostRoutine(multiplier, duration));
     }
 
     private IEnumerator ApplySpeedBoostRoutine(float multiplier, float duration)
@@ -63,8 +68,8 @@ public class PlayerPowerUpReceiver : MonoBehaviour
     {
         if (rapidFireCoroutine != null)
             StopCoroutine(rapidFireCoroutine);
-
-        rapidFireCoroutine = StartCoroutine(ApplyRapidFireRoutine(multiplier, duration));
+        rapidFireCoroutine = StartCoroutine(
+            ApplyRapidFireRoutine(multiplier, duration));
     }
 
     private IEnumerator ApplyRapidFireRoutine(float multiplier, float duration)
