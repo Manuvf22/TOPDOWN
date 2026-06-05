@@ -11,12 +11,9 @@ public class PlayerShooting : MonoBehaviour
     private float nextFireTime;
     private Camera mainCamera;
 
-    private PlayerStats playerStats;
-
     private void Awake()
     {
         mainCamera = Camera.main;
-        playerStats = GetComponent<PlayerStats>();
     }
 
     public void OnFire(InputAction.CallbackContext context)
@@ -25,8 +22,7 @@ public class PlayerShooting : MonoBehaviour
         if (Time.time < nextFireTime) return;
 
         Shoot();
-        float cooldown = playerStats != null ? playerStats.FireCooldown : fireCooldown;
-        nextFireTime = Time.time + cooldown;
+        nextFireTime = Time.time + fireCooldown;
     }
 
     private void Shoot()

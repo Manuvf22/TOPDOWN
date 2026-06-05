@@ -80,7 +80,6 @@ public class EnemyDash : EnemyAI
             health.TakeDamage(enemyHealth.DamageAmount);
 
         StartCoroutine(StunAfterHit());
-        Debug.Log("EnemyDash topeteó al jugador por " + enemyHealth.DamageAmount + " de daño");
     }
 
     private IEnumerator StunAfterHit()
