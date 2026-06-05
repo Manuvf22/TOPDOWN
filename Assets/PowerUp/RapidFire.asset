@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Rapid Fire
   type: 2
-  value: 0.5
+  value: 3
   duration: 6
   icon: {fileID: 0}
   color: {r: 1, g: 0.97292817, b: 0, a: 1}
