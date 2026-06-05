@@ -623,7 +623,7 @@ MonoBehaviour:
   hudManager: {fileID: 574609436}
   victoryPanel: {fileID: 1355653300}
   defeatPanel: {fileID: 454847175}
-  crosshair: {fileID: 0}
+  crosshair: {fileID: 1134251439}
 --- !u!4 &357184849
 Transform:
   m_ObjectHideFlags: 0
@@ -2424,7 +2424,7 @@ RectTransform:
   m_GameObject: {fileID: 1134251439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 9.767069, y: 9.767069, z: 9.767069}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048511738}
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: e4a4214895bd0a74cbf67697b1a6ae38, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
