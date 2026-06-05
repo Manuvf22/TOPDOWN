@@ -10,7 +10,9 @@ public class EnemyProjectile : MonoBehaviour
         {
             playerHealth.TakeDamage(damage);
             Destroy(gameObject);
+            Debug.Log("Proyectil enemigo impactó al jugador por " + damage + " de daño");
         }
+
 
         if (!other.CompareTag("Enemy"))
             Destroy(gameObject);

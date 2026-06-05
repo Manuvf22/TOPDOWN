@@ -42,5 +42,7 @@ public class EnemyMelee : EnemyAI
 
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
+
+        Debug.Log("EnemyMelee atacó al jugador por " + enemyHealth.DamageAmount + " de daño");
     }
 }
