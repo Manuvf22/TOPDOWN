@@ -29,15 +29,27 @@ public class GameManager : MonoBehaviour
         hudManager?.UpdateKeys(currentKeys);
     }
 
-    public void OnPlayerDied()
-    {
-        defeatPanel?.SetActive(true);
-        Time.timeScale = 0f;
-    }
+    [SerializeField] private GameObject crosshair;
 
     public void OnPlayerWon()
     {
         victoryPanel?.SetActive(true);
+        crosshair?.SetActive(false);
         Time.timeScale = 0f;
     }
+
+    public void OnPlayerDied()
+    {
+        defeatPanel?.SetActive(true);
+        crosshair?.SetActive(false);
+        Time.timeScale = 0f;
+    }
+
+
+
+
+
+
+
+
 }
