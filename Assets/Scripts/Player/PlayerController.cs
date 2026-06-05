@@ -30,10 +30,13 @@ public class PlayerController : MonoBehaviour
     private float verticalVelocity;
     private bool isJumping;
 
+    private PlayerStats playerStats;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         mainCamera = Camera.main;
+        playerStats = GetComponent<PlayerStats>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -89,9 +92,9 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y) * moveSpeed;
+        float speed = playerStats != null ? playerStats.MoveSpeed : moveSpeed;
+        Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y) * speed;
         movement.y = verticalVelocity;
-
         characterController.Move(movement * Time.deltaTime);
     }
 
