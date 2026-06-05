@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         currentHealth = Mathf.Max(currentHealth - amount, 0f);
         HUDManager.Instance?.UpdateIntegrity(currentHealth, maxHealth);
-
+        Debug.Log("Jugador recibió daño. Vida restante: " + currentHealth + "/" + maxHealth);
         if (currentHealth <= 0f)
             Die();
     }
