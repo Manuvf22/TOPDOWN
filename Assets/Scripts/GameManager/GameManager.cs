@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject victoryPanel;
     [SerializeField] private GameObject defeatPanel;
 
+    [SerializeField] private Barrier exitBarrier; // barrera que bloquea la sala final
+
     private void Awake()
     {
         Instance = this;
@@ -45,11 +47,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void OnBossDefeated()
+    {
+        // Abrir la salida a la sala final
+        if (exitBarrier != null)
+            exitBarrier.gameObject.SetActive(false);
 
-
-
-
-
-
+        Debug.Log("Jefe derrotado, salida abierta!");
+    }
 
 }

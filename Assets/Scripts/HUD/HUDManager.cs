@@ -24,6 +24,11 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Image corruptionFrame;
     [SerializeField] private float flashDuration = 0.15f;
 
+    [Header("Jefe")]
+    [SerializeField] private GameObject bossHealthPanel;
+    [SerializeField] private Image bossHealthFill;
+    [SerializeField] private TextMeshProUGUI bossHealthLabel;
+
     private Coroutine powerUpCoroutine;
     private Coroutine flashCoroutine;
 
@@ -179,5 +184,55 @@ public class HUDManager : MonoBehaviour
         Color c = image.color;
         c.a = alpha;
         image.color = c;
+    }
+
+    // ── Jefe ───────────────────────────────────────────
+
+    public void ShowBossHealth(string bossName, float current, float max)
+    {
+        if (bossHealthPanel == null) return;
+        bossHealthPanel.SetActive(true);
+        StartCoroutine(FadeBossPanel(true));
+        UpdateBossHealth(current, max);
+    }
+
+    public void UpdateBossHealth(float current, float max)
+    {
+        if (bossHealthFill == null) return;
+        float ratio = current / max;
+        bossHealthFill.fillAmount = ratio;
+
+        if (bossHealthLabel != null)
+        {
+            int percent = Mathf.CeilToInt(ratio * 100);
+            bossHealthLabel.text = $"{percent}%";
+        }
+    }
+
+    public void HideBossHealth()
+    {
+        StartCoroutine(FadeBossPanel(false));
+    }
+
+    private IEnumerator FadeBossPanel(bool fadeIn)
+    {
+        CanvasGroup cg = bossHealthPanel.GetComponent<CanvasGroup>();
+        if (cg == null) cg = bossHealthPanel.AddComponent<CanvasGroup>();
+
+        bossHealthPanel.SetActive(true);
+        float from = fadeIn ? 0f : 1f;
+        float to = fadeIn ? 1f : 0f;
+        float elapsed = 0f;
+        float duration = 0.5f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            cg.alpha = Mathf.Lerp(from, to, elapsed / duration);
+            yield return null;
+        }
+
+        cg.alpha = to;
+        if (!fadeIn) bossHealthPanel.SetActive(false);
     }
 }

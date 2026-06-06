@@ -6,15 +6,40 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            if (other.TryGetComponent(out EnemyHealth enemyHealth))
-                enemyHealth.TakeDamage(damage);
+        // Ignorar al jugador
+        if (other.CompareTag("Player")) return;
 
+        // Dañar enemigo normal
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+        if (enemyHealth == null)
+            enemyHealth = other.GetComponentInParent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(damage);
             Destroy(gameObject);
+            return;
         }
 
-        if (other.CompareTag("Ground"))
+        // Dañar al jefe
+        BossHealth bossHealth = other.GetComponent<BossHealth>();
+        if (bossHealth == null)
+            bossHealth = other.GetComponentInParent<BossHealth>();
+        if (bossHealth != null)
+        {
+            bossHealth.TakeDamage(damage);
             Destroy(gameObject);
+            return;
+        }
+
+        // Destruir al tocar suelo
+        if (other.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // Ignorar triggers de zona (BossTrigger, GoalZone, etc)
+        // sin destruir el proyectil
+        if (other.CompareTag("Untagged") && other.isTrigger) return;
     }
 }
