@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 728982188292869506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.398, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4424782857598674737}
   - component: {fileID: 5640991262570088995}
   - component: {fileID: 5459749587946241}
+  - component: {fileID: 1222303962789479674}
   m_Layer: 0
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -62,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.706, y: -0.309, z: -4.64}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 570897270735775604}
@@ -92,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: fd3f28898aa4320409895499ca6515fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,8 +134,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7891135, y: 1, z: 0.70203114}
-  m_Center: {x: -0.10544324, y: 0, z: -0.14898443}
+  m_Size: {x: 0.5682666, y: 0.78304857, z: 0.70203114}
+  m_Center: {x: 0.0049804333, y: 0.37396216, z: -0.14898443}
 --- !u!114 &4424782857598674737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5459749587946241
@@ -186,11 +187,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRange: 15
   stopDistance: 1.5
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1167512968889331885, guid: a848c0bb5e98daf4fade13b92186c41a, type: 3}
   firePoint: {fileID: 570897270735775604}
   projectileSpeed: 10
   fireCooldown: 2
   preferredDistance: 8
+--- !u!33 &1222303962789479674
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859737525115234106}
+  m_Mesh: {fileID: 8206133118474488911, guid: f1cd6800d51724d4291ee22764292e86, type: 3}
 --- !u!1001 &8410272457475290369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,9 +208,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7062543775914938309}
     m_Modifications:
+    - target: {fileID: -6079609511652705231, guid: a51be7f97c8591a4881c05aabc84cfee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 533843426164011377, guid: a51be7f97c8591a4881c05aabc84cfee, type: 3}
       propertyPath: m_Name
       value: stool_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 533843426164011377, guid: a51be7f97c8591a4881c05aabc84cfee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2552965089033770414, guid: a51be7f97c8591a4881c05aabc84cfee, type: 3}
       propertyPath: m_LocalPosition.x

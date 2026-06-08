@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6165251581190998648}
   - component: {fileID: 3938399481743780847}
   - component: {fileID: 7185114565392530532}
+  - component: {fileID: 6957050013998000230}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: Enemy
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 2302035262553949278}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6025968, y: -0.29, z: -0.87268144}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.6025968, y: -0.272, z: -0.87268144}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7101994880421274492}
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: fd3f28898aa4320409895499ca6515fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,8 +102,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.57366925, y: 1.2222705, z: 0.70163995}
+  m_Center: {x: -0.050723173, y: 0.58401364, z: -0.061375905}
 --- !u!114 &6165251581190998648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7185114565392530532
@@ -156,6 +157,14 @@ MonoBehaviour:
   stopDistance: 1.5
   attackCooldown: 1.5
   attackRange: 1.5
+--- !u!33 &6957050013998000230
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302035262553949278}
+  m_Mesh: {fileID: -1434011637881021500, guid: f1cd6800d51724d4291ee22764292e86, type: 3}
 --- !u!1001 &6348157668212026846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,7 +217,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: simple_chair_1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4782796004413089033, guid: f68bfe219b543b747b5834a1b4403166, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -6567514968793915576, guid: f68bfe219b543b747b5834a1b4403166, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
